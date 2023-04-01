@@ -44,15 +44,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         generate_random_parameters::<Bn254, _, _>(c, rng).unwrap()
     };
 
-    let assigment = Circuit {
-        a: Some(1.into()),
+    let assignment = Circuit {
+        a: Some(4.into()),
         b: Some(2.into()),
-        c: Some(3.into()),
+        c: Some(6.into()),
     };
 
-    let public_input = &[assigment.c.unwrap()];
+    let public_input = &[assignment.c.unwrap()];
 
-    let proof = create_random_proof(assigment, &pk, rng).unwrap();
+    let proof = create_random_proof(assignment, &pk, rng).unwrap();
 
     let mut proof_vec = Vec::new();
     proof.serialize(&mut proof_vec).unwrap();
